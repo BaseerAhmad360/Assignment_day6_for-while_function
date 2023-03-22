@@ -1,0 +1,113 @@
+flip_coin_simulator:
+#! /bin/bash -x
+
+echo "flip Coin Simulator"
+
+Head=0
+Tail=0
+while [ $Head != 11 ] && [ $Tail != 11 ]
+do
+	if [ $((RANDOM%2)) -eq 1 ]
+	then
+	    ((Head++))
+	else
+	    ((Tail++))
+	fi
+done
+
+if [ $Head -eq 11 ]
+then
+    echo Head wins 11 times
+else
+    echo Tail wins 11 times
+fi
+
+
+
+
+=>Gamler:
+#! /bin/bash
+
+
+gambler_money=100
+is_bet=1 
+
+bet_times=0
+bet_wons=0
+bet_lose=0
+
+while [ $gambler_money -gt 0 ] && [ $gambler_money -lt 200 ] && [ $is_bet -eq 1 ]
+do
+
+	flip_coin=$((RANDOM%2))
+
+	if [ $flip_coin -eq 0 ] 
+	then
+		bet_wons=$((bet_wons+1))
+	else
+		gambler_money=$((gambler_money-1))
+		bet_lose=$((bet_lose+1))
+	fi
+		bet_times=$((bet_times+1))
+done
+
+echo $bet_wons win game
+echo $bet_times beat made
+
+
+
+
+
+
+=> Magic_number:
+#! /bin/bash -x
+
+high=100
+mid=0
+
+mid=$(((low+high)/2))
+
+isNotMagicNumber=1
+
+while [ $isNotMagicNumber -eq 1 ]
+
+do
+	if [[ "$low" == "$mid" ]]
+	then
+		isNotMagicNumber=0
+		echo "The magic number is $low "
+	else
+		read -p "is number is less than $mid yes:" choice
+	fi
+	if [[ "$choice" == "yes" || "$choice" == "y" || "$choice" == "Y" ]]
+	then
+		high=$mid
+	else
+		low=$mid
+	fi
+
+	mid=$(((low+high)/2))
+done
+
+
+
+
+
+Power_2_till_256:
+#! /bin/bash -x
+
+read -p "Enter the nth number:"  number
+
+counter=0
+
+result=0
+
+
+while [ $counter -le $number ] && [ $result -lt 256 ]
+do
+	result=$((2**counter))
+
+	echo $result
+
+	counter=$((counter+1))
+done
